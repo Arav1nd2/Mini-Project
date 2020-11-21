@@ -6,7 +6,7 @@ import pandas as pd
 
 
 def read_csv(filename, op_type):
-    _df = pd.read_csv(filename)
+    _df = pd.read_csv(filename, sep=';')
     _df['filename'] = op_type + filename.split('/')[-1].split('.')[0]
     return _df
 # start merging files
@@ -51,7 +51,7 @@ def acoustic_features():
     nd_df = merger('ND')
 
     op = pd.concat([d_df, nd_df])
-
-    op.to_csv('./Acoustic.csv')
+    op.drop(['name'], axis=1, inplace=True)
+    op.to_csv('./Acoustic.csv', sep=';')
     shutil.rmtree('./Acoustic/output')
     return op

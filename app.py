@@ -8,6 +8,7 @@ Created on Mon Oct 12 12:38:08 2020
 
 from glottal_extract import glottal_features
 from acoustic_extract import acoustic_features
+from PCAExt import pca_ext
 import argparse
 import sys
 import shutil
@@ -52,6 +53,8 @@ if os.path.isdir('./Glottal/Output'):
     shutil.rmtree('./Glottal/Output')
 print("Glottal features extracted and saved in respective file")
 
+
+# glottal = pd.read_csv('Glottal.csv')
 print("Preparing for Acoustic feature extraction")
 if os.path.isdir('./Acoustic/Audio'):
     shutil.rmtree('./Acoustic/Audio')
@@ -61,6 +64,12 @@ if os.path.isdir('./Acoustic/Audio'):
     shutil.rmtree('./Acoustic/Audio')
 print("Acoustic features extracted and saved in respective file")
 
-merged = pd.merge(acoustic, glottal, on="filename")
+print("Preparing Dataset for Principle Component Analyis.....")
+pca = pca_ext(glottal)
 
+semi_merged = pd.merge(acoustic, glottal, on="filename")
+
+merged = pd.merge(semi_merged, pca, on="filename")
 merged.to_csv("./final.csv")
+
+pca.to_csv('./PCA.csv')
