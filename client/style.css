@@ -1,0 +1,32 @@
+.title {
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1ch;
+  margin: 0 auto;
+}
+
+body {
+  background-color: rgba(253, 210, 131, 0.39);
+  font-family: "Lato", sans-serif !important;
+}
+
+.main-img {
+  max-width: 400px;
+}
+
+.detail-text > p {
+  color: rgb(78, 78, 78);
+}
+
+.detail-text > h2 {
+  font-weight: 800;
+}
+
+#results > h3 {
+  text-decoration: underline;
+  letter-spacing: 0.4ch;
+}
+
+.loading {
+  font-size: larger;
+}
