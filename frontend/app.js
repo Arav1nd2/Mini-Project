@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ).innerHTML = `<p class='loading'>Predicting Class....</p>`;
         let formData = new FormData();
         formData.append("image", file);
-        fetch("http://e9fb22a4c52d.ngrok.io/file", {
+        fetch("https://4dff600f694c.ngrok.io/file", {
           method: "POST",
           body: formData,
         })
